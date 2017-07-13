@@ -1,3 +1,5 @@
-.classpath
 /target
-/target/*
+
+target/classes/*
+.classpath
+.settings/*
