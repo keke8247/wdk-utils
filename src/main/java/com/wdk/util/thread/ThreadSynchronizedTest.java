@@ -56,6 +56,17 @@ class Sync {
 			System.out.println("test结束....");
 		}
 	}
+	
+	public void test3(){
+		Thread thread = new Thread(new Runnable() {
+			
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		thread.start();
+	}
 }
 
 class MyThread extends Thread{

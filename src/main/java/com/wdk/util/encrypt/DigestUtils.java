@@ -1,5 +1,6 @@
 package com.wdk.util.encrypt;
 
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -24,6 +25,7 @@ public class DigestUtils{
             throw new RuntimeException(e.getMessage());  
         }  
     }  
+    
   
     /** 
      * 获取 MD5 消息摘要实例 

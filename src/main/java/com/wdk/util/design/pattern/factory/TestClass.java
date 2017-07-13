@@ -1,11 +1,18 @@
 package com.wdk.util.design.pattern.factory;
 
 public class TestClass {
-	static{
-		System.out.println("test!");
+	
+	public static void testMethod() throws ClassNotFoundException, InstantiationException, IllegalAccessException{
+		TestOne test = (TestOne) ObjectFactory.getInstance().createObject("com.wdk.util.design.pattern.factory.TestOne");
+		test.getUserMsg();
 	}
 	
-	public void testMethod(){
-		System.out.println("testMethod");
+	public static void main(String[] args) {
+		try {
+			testMethod();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+	
 }
