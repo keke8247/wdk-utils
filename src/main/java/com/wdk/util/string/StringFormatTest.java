@@ -5,11 +5,14 @@ import java.util.Locale;
 
 public class StringFormatTest {
 	public static void main(String[] args) {  
-	     testOne();
-	     testTwo();
-	     testThree();
+		String str1 = "hello";
+		String str2 = "he" + new String("llo");
+		System.err.println(str1 == str2);
+
+//	     testOne();
+//	     testTwo();
+//	     testThree();
 	} 	
-	
 	
 	/**
 	 * @description

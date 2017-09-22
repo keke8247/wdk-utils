@@ -1,6 +1,5 @@
 package com.wdk.util.encrypt;
 
-import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
