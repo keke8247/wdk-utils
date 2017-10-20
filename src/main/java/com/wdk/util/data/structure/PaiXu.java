@@ -53,7 +53,7 @@ public class PaiXu {
 	 * 插入排序
 	 * */
 	@Test
-	public  void testThree(){
+	public static void testThree(){
 		Random rm = new Random();
 		int[] list = new int[100];
 		int x = 0;
@@ -80,5 +80,9 @@ public class PaiXu {
 		for(int i=0;i<list.length;i++){
 			System.out.print(list[i] +"\t");
 		}
+	}
+	
+	public static void main(String[] args) {
+		testThree();
 	}
 }
