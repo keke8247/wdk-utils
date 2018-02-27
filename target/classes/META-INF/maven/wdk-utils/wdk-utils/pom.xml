@@ -227,12 +227,24 @@
 	    <version>5.5.1</version>
 	</dependency>
 	
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.32</version>
+	</dependency>
+	
 	
 	<dependency>
          <groupId>org.apache.httpcomponents</groupId>
          <artifactId>httpasyncclient</artifactId>
          <version>4.1.1</version>
      </dependency>
+     
+	<dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>1.2.17</version>
+	</dependency>
 	
   </dependencies>
 </project>
