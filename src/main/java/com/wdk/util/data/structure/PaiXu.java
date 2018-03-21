@@ -22,7 +22,7 @@ public class PaiXu {
 	/**
 	 * 冒泡排序
 	 * */
-	public void testTwo(){
+	public static void testTwo(){
 		Random rm = new Random();
 		int[] list = new int[100];
 		int x = 0;
@@ -84,6 +84,7 @@ public class PaiXu {
 	}
 	
 	public static void main(String[] args) {
+		testTwo();
 		testThree();
 	}
 }
