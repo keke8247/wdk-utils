@@ -50,20 +50,17 @@ public class SimpleHttpClientDemo {
 	  
 	    // 实现一个X509TrustManager接口，用于绕过验证，不用修改里面的方法  
 	    X509TrustManager trustManager = new X509TrustManager() {  
-	        @Override  
-	        public void checkClientTrusted(  
+	        public void checkClientTrusted(
 	                java.security.cert.X509Certificate[] paramArrayOfX509Certificate,  
 	                String paramString) throws CertificateException {  
 	        }  
 	  
-	        @Override  
-	        public void checkServerTrusted(  
+	        public void checkServerTrusted(
 	                java.security.cert.X509Certificate[] paramArrayOfX509Certificate,  
 	                String paramString) throws CertificateException {  
 	        }  
 	  
-	        @Override  
-	        public java.security.cert.X509Certificate[] getAcceptedIssuers() {  
+	        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
 	            return null;  
 	        }  
 	    };  
@@ -154,7 +151,7 @@ public class SimpleHttpClientDemo {
 	        trustStore.load(instream, keyStorepass.toCharArray());  
 	        // 相信自己的CA和所有自签名的证书  
 	        sc = SSLContexts.custom().loadTrustMaterial(trustStore, new TrustSelfSignedStrategy()).build();  
-	    } catch (KeyStoreException | NoSuchAlgorithmException| CertificateException | IOException | KeyManagementException e) {  
+	    } catch (Exception e) {
 	        e.printStackTrace();  
 	    } finally {  
 	        try {  

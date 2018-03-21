@@ -67,7 +67,7 @@ public class SimpleHttpAsyncClientDemo {
             trustStore.load(instream, keyStorepass.toCharArray());  
             // 相信自己的CA和所有自签名的证书  
             sc = SSLContexts.custom().loadTrustMaterial(trustStore, new TrustSelfSignedStrategy()).build();  
-        } catch (KeyStoreException | NoSuchAlgorithmException| CertificateException | IOException | KeyManagementException e) {  
+        } catch (Exception e) {
             e.printStackTrace();  
         } finally {  
             try {  
@@ -110,8 +110,7 @@ public class SimpleHttpAsyncClientDemo {
   
     /** 
      * 设置代理 
-     * @param builder 
-     * @param hostOrIP 
+     * @param hostOrIP
      * @param port 
      */  
     public static HttpAsyncClientBuilder proxy(String hostOrIP, int port){  
@@ -207,7 +206,7 @@ public class SimpleHttpAsyncClientDemo {
                             EntityUtils.consume(entity);  
                         }  
                     }  
-                } catch (ParseException | IOException e) {  
+                } catch (Exception e) {
                     e.printStackTrace();  
                 }  
                 handler.completed(body);  

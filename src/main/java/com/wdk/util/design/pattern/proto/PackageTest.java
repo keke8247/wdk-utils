@@ -1,6 +1,6 @@
 package com.wdk.util.design.pattern.proto;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 public class PackageTest {
 	

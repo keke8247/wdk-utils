@@ -4,9 +4,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import com.wdk.util.design.pattern.factory.ObjectFactory;
+import com.wdk.util.design.pattern.factory.one.ObjectFactory;
 
 public class TestDecorator {
 	

@@ -1,7 +1,12 @@
 package com.wdk.util.leetcode;
 
-import org.junit.Test;
-
+import org.testng.annotations.Test;
+/**
+ * @Description:
+ * 寻找一个数组中心点,  中心点两边的数字之和相等.
+ * @Author :wangdk
+ * @CreatTime: 2018/2/28 10:04
+*/
 public class SolutionPivotIndex {
 	public int pivotIndex(int[] nums) {
 		if(nums.length == 0){

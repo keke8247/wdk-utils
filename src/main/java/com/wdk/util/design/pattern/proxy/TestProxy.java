@@ -1,6 +1,6 @@
 package com.wdk.util.design.pattern.proxy;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 
 public class TestProxy {

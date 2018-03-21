@@ -89,7 +89,7 @@ public class StringFormatTest {
 	    //.使用  
 	    System.out.printf("整数分组的效果是：%,d%n", 9989997);  
 	    //空格和小数点后面个数  
-	    System.out.printf("一本书的价格是：% 50.5f元%n", 49.8);  
+	    System.out.printf("一本书的价格是：% 1.4f元%n", 49.8);
 	}
 	
 	/**

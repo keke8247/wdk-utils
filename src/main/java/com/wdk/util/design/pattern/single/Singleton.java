@@ -11,15 +11,23 @@ public class Singleton {
 	private static Singleton instance;
 	
 	public Singleton(){
-		System.out.println(Math.random());
 	}
-	
+
+	private static synchronized void syncInit(){
+		instance = new Singleton();
+	}
+
 	public static  Singleton getInstance(){
-		synchronized (Singleton.class) {
-			if(null == instance){
-				instance = new Singleton();
-			}
-			return instance;
+		if(null == instance){
+			syncInit();
 		}
+
+		return instance;
 	}
+
+	/* 如果该对象被用于序列化，可以保证对象在序列化前后保持一致 */
+	public Object readResolve() {
+		return getInstance();
+	}
+
 }

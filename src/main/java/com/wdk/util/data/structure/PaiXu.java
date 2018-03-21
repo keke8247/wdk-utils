@@ -2,9 +2,10 @@ package com.wdk.util.data.structure;
 
 import java.util.Random;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 public class PaiXu {
+
 	@Test
 	public void testOne(){
 		Random rm = new Random();

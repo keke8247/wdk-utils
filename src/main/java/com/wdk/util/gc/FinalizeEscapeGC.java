@@ -62,7 +62,7 @@ public class FinalizeEscapeGC {
 		senderImpl.setJavaMailProperties(prop);
 		// 发送邮件
 		mailMessage.setTo("1531451174@qq.com");
-		senderImpl.send(mailMessage);
+//		senderImpl.send(mailMessage);
 		System.out.println("send OK by lkmgydx");
 	}
 }

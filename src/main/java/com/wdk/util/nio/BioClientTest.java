@@ -16,7 +16,6 @@ public class BioClientTest {
 }  
   
 class BioClient implements Runnable {  
-    @Override  
     public void run() {  
   
         try {  

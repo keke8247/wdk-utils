@@ -1,4 +1,4 @@
-package com.wdk.util.design.pattern.factory;
+package com.wdk.util.design.pattern.factory.one;
 
 /**
  *	@Description
@@ -10,7 +10,7 @@ package com.wdk.util.design.pattern.factory;
 public class ObjectFactory {
 	private static ObjectFactory factory;
 	
-	public static ObjectFactory getInstance(){
+	public static ObjectFactory getInstance(){ //单例
 		if(null == factory){
 			factory = new ObjectFactory();
 		}
