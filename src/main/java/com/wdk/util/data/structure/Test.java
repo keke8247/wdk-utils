@@ -27,13 +27,10 @@ public class Test {
 		System.out.println("开始插入排序:");
 		
 		int x = 0; //排序过渡中间数
-		
 		for(int m=1;m<intArray.length;m++){ //从第二个元素开始比
 			x = intArray[m]; //记录中间数
-			
 			int n = m;
-			
-			//用后一个和前一个开始比.如果后一个<前一个   前后值交换 
+			//用后一个和前一个开始比.如果后一个<前一个   前后值交换
 			while(n>0 && intArray[n-1]>x){
 				intArray[n] = intArray[n-1];
 				n--;
