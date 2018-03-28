@@ -31,6 +31,10 @@ public class CalculatorInvocationHandler implements InvocationHandler{
 	public CalculatorInvocationHandler(Object target){
 		this.target = target;
 	}
+
+	public CalculatorInvocationHandler(){
+
+	}
 	
 	/*InvocationHandler接口的方法，proxy表示代理，method表示原对象被调用的方法，args表示方法的参数*/
 	public Object invoke(Object proxy, Method method, Object[] args)
