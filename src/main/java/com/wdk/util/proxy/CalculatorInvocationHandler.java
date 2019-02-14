@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  *	@Description
  *	动态代理类,
- *	JDK动态代理只能代理接口,不能代理类
+ *	JDK动态代理只能代理接口,不能代理类 因为生成的动态代理类已经继承了Proxy类 java是单继承 所以不能代理其他类
  *	实现动态代理 需要实现 InvocationHandler接口
  *  @author wangdk,wangdk@erongdu.com
  *  @CreatTime 2016年11月7日 下午2:36:08

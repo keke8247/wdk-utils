@@ -4,7 +4,6 @@ import org.testng.annotations.Test;
 
 import com.wdk.util.design.pattern.factory.one.ObjectFactory;
 import com.wdk.util.design.pattern.factory.one.TestClass;
-import com.wdk.util.design.pattern.single.Singleton;
 
 public class PackageTest {
 	

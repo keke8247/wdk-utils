@@ -1,10 +1,9 @@
 package com.wdk.util.thread.pool;
 
+import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.Random;
+import java.util.concurrent.*;
 
 /**
  * @Description 
@@ -136,12 +135,157 @@ public class ThreadPoolTest {
 		System.out.println(2 << one);
 		System.out.println(3 << one);
 	}
-	
-	
+
+	/**
+	 * @Description:
+	 * 使用线程池 循环20000次
+	 * @Author :wangdk
+	 * @CreatTime: 2018/10/29 11:35
+	*/
+	private static void testUseThreadPool(){
+		long startTime = System.currentTimeMillis();
+		final List<Integer> l = new LinkedList<Integer>();
+		ThreadPoolExecutor tp = new ThreadPoolExecutor(30, 30, 20, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(20000));
+		final Random random = new Random();
+		for (int i = 0; i < 20000; i++)
+		{
+			tp.execute(new Runnable()
+			{
+				public void run()
+				{
+					l.add(random.nextInt());
+				}
+			});
+		}
+		tp.shutdown();
+		try
+		{
+			tp.awaitTermination(1, TimeUnit.DAYS);
+		}
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println("testUseThreadPool \n"+(System.currentTimeMillis() - startTime));
+		System.out.println(l.size());
+	}
+
+	/**
+	 * @Description:
+	 * 使用可缓存线程池
+	 * @Author :wangdk
+	 * @CreatTime: 2018/10/29 11:46
+	 */
+	private static void testCacheThreadPool(){
+		long startTime = System.currentTimeMillis();
+		final List<Integer> l = new LinkedList<Integer>();
+		ExecutorService cacheThreadPool = Executors.newCachedThreadPool();
+		final Random random = new Random();
+		for (int i = 0; i < 20000; i++)
+		{
+			cacheThreadPool.execute(new Runnable()
+			{
+				public void run()
+				{
+					l.add(random.nextInt());
+				}
+			});
+		}
+		cacheThreadPool.shutdown();
+		try
+		{
+			cacheThreadPool.awaitTermination(1, TimeUnit.DAYS);
+		}
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println("testCacheThreadPool \n"+(System.currentTimeMillis() - startTime));
+		System.out.println(l.size());
+
+	}
+
+	/**
+	 * @Description:
+	 * 使用单例化线程池
+	 * @Author :wangdk
+	 * @CreatTime: 2018/10/29 11:46
+	 */
+	private static void testSingleThreadPool(){
+		long startTime = System.currentTimeMillis();
+		final List<Integer> l = new LinkedList<Integer>();
+		ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+		final Random random = new Random();
+		for (int i = 0; i < 20000; i++)
+		{
+			singleThreadExecutor.execute(new Runnable()
+			{
+				public void run()
+				{
+					l.add(random.nextInt());
+				}
+			});
+		}
+		singleThreadExecutor.shutdown();
+		try
+		{
+			singleThreadExecutor.awaitTermination(1, TimeUnit.MINUTES);
+		}
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println("testSingleThreadPool \n"+(System.currentTimeMillis() - startTime));
+		System.out.println(l.size());
+
+	}
+
+
+
+
+	/**
+	 * @Description:
+	 * 不实用线程池 循环20000次
+	 * @Author :wangdk
+	 * @CreatTime: 2018/10/29 11:35
+	*/
+	private static void didnotUseThreadPool(){
+		long startTime = System.currentTimeMillis();
+		final List<Integer> l = new LinkedList<Integer>();
+		final Random random = new Random();
+		for (int i = 0; i < 20000; i++)
+		{
+			Thread thread = new Thread()
+			{
+				public void run()
+				{
+					l.add(random.nextInt());
+				}
+			};
+			thread.start();
+			try
+			{
+				thread.join();
+			}
+			catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		System.out.println("didnotUseThreadPool \n"+(System.currentTimeMillis() - startTime));
+		System.out.println(l.size());
+	}
+
+
 	public static void main(String[] args) {
-		testWY();
+//		testUseThreadPool();
+//		testCacheThreadPool();
+//		testSingleThreadPool();
+//		didnotUseThreadPool();
+
+//		testWY();
 //		threadPoolExecutorTest();
-//		fixedThreadPoolTest();
+		fixedThreadPoolTest();
 //		scheduledThreadPoolTestOne();
 //		scheduledThreadPoolTestTwo();
 //		singleThreadTest();
