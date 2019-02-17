@@ -1,6 +1,19 @@
 package com.wdk.util.design.pattern.pay;
 
+import javax.annotation.PostConstruct;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public abstract class AbstractChinaPay implements Pay{
+
+    public static Map<String,AbstractChinaPay> payMap = new ConcurrentHashMap<>();
+
+    @PostConstruct
+    public void init(){
+        payMap.put(getType(),this);
+    }
+
+
     @Override
     public void payment(Object params) {
         //校验 封装参数
@@ -12,6 +25,8 @@ public abstract class AbstractChinaPay implements Pay{
         //回调支付结果
         callBack();
     }
+
+    public abstract String getType();
 
     public abstract Object checkParams(Object params);
 
