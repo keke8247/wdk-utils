@@ -11,41 +11,25 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) throws InterruptedException {
-        MyThread thread1 = new MyThread("thread1");
-        MyThread thread2 = new MyThread("thread2");
 
-        thread1.setPriority(Thread.MIN_PRIORITY);
-        thread2.setPriority(Thread.MAX_PRIORITY);
+        System.out.println(Integer.toBinaryString(-16));
 
-        thread1.start();
-        thread2.start();
-
-        Thread.sleep(200);
-
-        thread1.stopMethod();
-        thread2.stopMethod();
-    }
-
-
-
-}
-
-class MyThread extends Thread{
-
-    static boolean flag = true;
-
-    MyThread(String threadName){
-        super(threadName);
-    }
-
-    @Override
-    public void run() {
-        while(flag){
-            System.out.println(Thread.currentThread().getName());
+        for(int i=0;i<100;i++){
+            if(check(i)){
+                System.out.printf("%d:是2的整次幂~~~~~~~~~~~~~~\n",i);
+            }else{
+                System.out.printf("%d:不是2的整次幂--------------\n",i);
+            }
         }
+
     }
 
-    public void stopMethod(){
-        flag =false;
+    public static boolean check(int num){
+        if(num < 2){
+            return false;
+        }
+        int tmp = num&(num-1);
+        return  tmp == 0 ? true : false;
     }
 }
+

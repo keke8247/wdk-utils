@@ -19,7 +19,7 @@ public class PersonB extends Thread{
             bank.atm(200); //每次取款100块
 
             try {
-                sleep(10000);
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

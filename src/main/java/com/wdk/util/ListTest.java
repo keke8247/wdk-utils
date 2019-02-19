@@ -61,6 +61,19 @@ public class ListTest {
 	}
 
 	public static void main(String[] args) {
-		listQc();
+//		listQc();
+
+		ArrayList<String> strs = new ArrayList<>(10);
+		strs.add(0,"a");
+
+		strs.add(1,"b");
+
+		strs.add(2,"c");
+
+		System.out.println(strs.size());
+
+
+
+
 	}
 }

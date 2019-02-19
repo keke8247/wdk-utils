@@ -1,3 +1,5 @@
+import java.util.Hashtable;
+
 /**
  * @Description
  * @Author wangdk, wangdk@erongdu.com
@@ -5,27 +7,15 @@
  * @Since version 1.0.0
  */
 public class Test123 {
-
-
-
-    private  static void testM(int num){
-        if(num > 6){
-            return;
-        }
-
-        System.out.println(num);
-
-        num++ ;
-
-        testM(num);
-    }
-
-
     public static void main(String[] args) {
-        int num = 1;
+        Hashtable<String,Object> test = new Hashtable<>();
 
-        testM(num);
+
+        test.put("test",12);
+
+        System.out.println(test.get("test"));
+
+        System.out.println(test.keys().nextElement());
     }
-
 
 }
