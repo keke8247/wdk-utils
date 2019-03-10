@@ -18,7 +18,13 @@ public class NioClient {
       
         buffer.clear();  
         byte[] bytes;  
-        int count = 0;  
+        int count = 0;
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         while ((count = socketChannel.read(buffer)) > 0) {  
             buffer.flip();  
             bytes = new byte[count];  

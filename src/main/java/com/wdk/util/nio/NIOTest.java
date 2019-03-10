@@ -10,15 +10,15 @@ import java.nio.channels.FileChannel;
 public class NIOTest {
 
 	public static void testRead() throws IOException{
-		FileInputStream fileInputStream = new FileInputStream("F:/test.txt");
+		FileInputStream fileInputStream = new FileInputStream("F:/test1.txt");
 		
 		FileChannel fc = fileInputStream.getChannel();
 		
-		ByteBuffer buffer = ByteBuffer.allocate(1024);
+		ByteBuffer buffer = ByteBuffer.allocate(1024*100);
 		
 		fc.read(buffer);
-		
-		System.out.println();
+
+		System.out.println(new String (buffer.array(),"GB2312"));
 	}
 	
 	public static void copyFile() throws IOException{
@@ -30,12 +30,15 @@ public class NIOTest {
 		FileChannel fi = fileInputStream.getChannel();
 		
 		ByteBuffer buffer = ByteBuffer.allocate(1024);
-		
+
+		System.out.println(buffer.limit());
 		while(true){
 			if(fi.read(buffer)==-1){
 				break;
 			};
+			System.out.println(buffer.limit());
 			buffer.flip();
+
 			fc.write(buffer);
 			buffer.clear();
 		}
@@ -43,7 +46,7 @@ public class NIOTest {
 	
 	
 	public static void main(String[] args) throws IOException {
-		testRead();
 		copyFile();
+//		testRead();
 	}
 }
