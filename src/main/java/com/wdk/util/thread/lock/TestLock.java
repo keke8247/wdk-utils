@@ -11,8 +11,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Since version 1.0.0
  */
 public class TestLock {
+
+
+
     public static void main(String[] args) {
-        Ticket1 t = new Ticket1();
+        Ticket2 t = new Ticket2();
 
         new Thread(t,"Thread1").start();
         new Thread(t,"Thread2").start();
