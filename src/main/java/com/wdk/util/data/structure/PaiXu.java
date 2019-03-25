@@ -84,7 +84,7 @@ public class PaiXu {
 	}
 	
 	public static void main(String[] args) {
-		testTwo();
+//		testTwo();
 		testThree();
 	}
 }

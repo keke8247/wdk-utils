@@ -12,7 +12,11 @@ public class ObjectFactory {
 	
 	public static ObjectFactory getInstance(){ //单例
 		if(null == factory){
-			factory = new ObjectFactory();
+			synchronized (ObjectFactory.class){
+				if(null == factory){
+					factory = new ObjectFactory();
+				}
+			}
 		}
 		return factory;
 	}
