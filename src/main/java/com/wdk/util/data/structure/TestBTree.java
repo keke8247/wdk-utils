@@ -43,11 +43,12 @@ public class TestBTree {
 					intArray[j+1] = intArray[j];
 					intArray[j] = x;
 				}
-				System.out.println("第"+(j+1)+"次排序结果");
-				for(int k=0;k<intArray.length;k++){
-					System.out.print(intArray[k]+"\t");
-				}
 			}
+			System.out.println("第"+(i+1)+"次排序结果");
+			for(int k=0;k<intArray.length;k++){
+				System.out.print(intArray[k]+"\t");
+			}
+
 			
 			System.out.println();
 		}
