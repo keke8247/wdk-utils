@@ -1,6 +1,8 @@
 package com.wdk.util.thread.lock;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import java.util.Collections;
 
@@ -29,9 +31,27 @@ public class DistributedLock {
 
     public DistributedLock(){
         //初始化jedis
-        jedis = new Jedis();
-
+//        jedis = new Jedis();
     }
+
+    public static void initJedis(){
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("redis-beans.xml");
+        JedisPool jedisPool = context.getBean(JedisPool.class);
+        jedis = jedisPool.getResource();
+    }
+
+    public static void main(String[] args) {
+        initJedis();
+
+        if(tryGetDistributedLock("testLock","ksdfjeijfklsde",200000L)){
+            System.out.println("lock success");
+        }
+
+        if(releaseDistributeLock("testLock","ksdfjeijfklsde")){
+            System.out.println("release success");
+        }
+    }
+
     /**
      * @Description:
      * 由于不考虑Redis集群环境. 该方法满足了以上分布式锁的3个特性.

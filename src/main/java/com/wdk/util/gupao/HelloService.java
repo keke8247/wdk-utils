@@ -10,7 +10,7 @@ import com.google.common.util.concurrent.RateLimiter;
  * @Since version 1.0.0
  */
 public class HelloService {
-    RateLimiter rateLimiter = RateLimiter.create(20);
+    RateLimiter rateLimiter = RateLimiter.create(10);
 
     public void doRequest(){
         if(rateLimiter.tryAcquire()){
