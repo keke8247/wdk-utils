@@ -1,8 +1,9 @@
 package com.wdk.util.data.structure;
 
+import org.junit.Test;
+
 import java.util.Random;
 
-import org.testng.annotations.Test;
 
 public class PaiXu {
 
