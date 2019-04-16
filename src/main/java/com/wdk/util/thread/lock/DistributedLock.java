@@ -45,6 +45,8 @@ public class DistributedLock {
 
         if(tryGetDistributedLock("testLock","ksdfjeijfklsde",200000L)){
             System.out.println("lock success");
+        }else{
+            System.out.println("lock fail");
         }
 
         if(releaseDistributeLock("testLock","ksdfjeijfklsde")){

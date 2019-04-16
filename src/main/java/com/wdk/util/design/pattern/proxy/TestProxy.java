@@ -1,5 +1,10 @@
 package com.wdk.util.design.pattern.proxy;
 
+<<<<<<< HEAD
+=======
+
+import org.junit.Test;
+>>>>>>> d4c3c1ca74b4ff97c00dafb0946a55f57a537f9b
 
 import org.junit.Test;
 import java.lang.reflect.Proxy;
