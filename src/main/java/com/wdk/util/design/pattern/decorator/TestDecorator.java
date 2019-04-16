@@ -4,10 +4,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d4c3c1ca74b4ff97c00dafb0946a55f57a537f9b
 import com.wdk.util.design.pattern.factory.one.ObjectFactory;
 import org.junit.Test;
 

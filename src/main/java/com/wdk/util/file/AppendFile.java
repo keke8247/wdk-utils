@@ -111,14 +111,14 @@ public class AppendFile {
   
     public static void main(String[] args) {  
         try{  
-            File file = new File("G://log.txt");  
+            File file = new File("F://log.txt");
             if(file.createNewFile()){  
                 System.out.println("Create file successed");  
             }  
-            method1("G://log.txt", "mehtod1");  
-            method2("G://log.txt", "mehtod2");  
-            method3("G://log.txt", "mehtod3");  
-            method4("G://log.txt", "mehtod4");  
+            method1("F://log.txt", "mehtod1");
+            method2("F://log.txt", "mehtod2");
+            method3("F://log.txt", "mehtod3");
+            method4("F://log.txt", "mehtod4");
         }catch(Exception e){  
             System.out.println(e);  
         }  
