@@ -1,9 +1,9 @@
 package com.wdk.util.design.pattern;
 
-import org.testng.annotations.Test;
 
 import com.wdk.util.design.pattern.factory.one.ObjectFactory;
 import com.wdk.util.design.pattern.factory.one.TestClass;
+import org.junit.Test;
 
 public class PackageTest {
 	

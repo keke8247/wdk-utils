@@ -3,12 +3,11 @@ package com.wdk.util.testSpring.testReplaceMethod;
 import java.io.File;
 
 
+import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.testng.annotations.Test;
-
 /**
  *	@Description
  *  @author wangdk,wangdk@erongdu.com

@@ -2,11 +2,11 @@ package com.wdk.util.data.structure;
 
 import java.util.Random;
 
-import org.testng.annotations.Test;
 
 public class PaiXu {
 
-	@Test
+
+	@org.junit.Test
 	public void testOne(){
 		Random rm = new Random();
 		int[][] list = new int[10][10];
@@ -18,7 +18,7 @@ public class PaiXu {
 			System.out.println();
 		}
 	}
-	@Test
+	@org.junit.Test
 	/**
 	 * 冒泡排序
 	 * */
@@ -53,7 +53,7 @@ public class PaiXu {
 	/**
 	 * 插入排序
 	 * */
-	@Test
+	@org.junit.Test
 	public static void testThree(){
 		Random rm = new Random();
 		int[] list = new int[100];

@@ -1,7 +1,7 @@
 package com.wdk.util.design.pattern.proxy;
 
-import org.testng.annotations.Test;
 
+import org.junit.Test;
 import java.lang.reflect.Proxy;
 
 

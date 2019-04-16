@@ -36,5 +36,10 @@ public class CopyFile
 
       fcout.write( buffer );
     }
+
+    fcin.close();
+    fcout.close();
+    fout.close();
+    fin.close();
   }
 }

@@ -1,6 +1,7 @@
 package com.wdk.util.leetcode;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
+
 /**
  * @Description:
  * 寻找一个数组中心点,  中心点两边的数字之和相等.
