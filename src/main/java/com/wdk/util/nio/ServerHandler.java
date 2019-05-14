@@ -117,9 +117,10 @@ public class ServerHandler implements Runnable{
                     int readBytes = sc.read(byteBuffer);
 
                     if(readBytes > 0){
-                        byte [] bytes = new byte[readBytes]; //存放数据
 
                         byteBuffer.flip();
+
+                        byte [] bytes = new byte[byteBuffer.remaining()]; //存放数据
 
                         byteBuffer.get(bytes);
 

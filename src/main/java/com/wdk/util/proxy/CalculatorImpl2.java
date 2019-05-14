@@ -19,7 +19,7 @@ public class CalculatorImpl2 implements Calculator{
 //	}
 	
 	public double add(double num1, double num2) throws Exception {
-		System.out.println("im calculatorImpl2");
+		System.out.println("time calculatorImpl2");
 		return num1+num2;
 	}
 

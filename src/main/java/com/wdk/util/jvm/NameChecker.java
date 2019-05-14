@@ -14,39 +14,39 @@ import javax.lang.model.util.ElementScanner7;
 import javax.tools.Diagnostic.Kind;
 
 public class NameChecker {
-	
+
 	private final Messager messager;
 
 	private NameCheckScanner nameCheckScanner = new NameCheckScanner();
-	
+
 	public NameChecker(ProcessingEnvironment processingEnv) {
 		this.messager = processingEnv.getMessager();
 	}
-	
+
 	/**
 	 * @description
-	 * 	 ¶ÔjavaÃüÃû¸ñÊ½½øĞĞ¼ì²é,	
+	 * 	 å¯¹javaå‘½åæ ¼å¼è¿›è¡Œæ£€æŸ¥,
 	 * @param element
 	 * @author wangdk
 	 * @return void
 	 * @since  1.0.0
-	*/
+	 */
 	public void checkNames(Element element){
 		nameCheckScanner.scan(element);
 	}
-	
+
 	/**
 	 *	@Description
-	 *	Ãû³Æ¼ì²éÆ÷ÊµÏÖÀà ¼Ì³ĞÁËJDK1.7Ìá¹©µÄElementScanner7
-	 *	½«»áÒÔvisitorÄ£Ê½·ÃÎÊ³éÏóÓï·¨Ê÷ÖĞµÄÔªËØ
+	 *	åç§°æ£€æŸ¥å™¨å®ç°ç±» ç»§æ‰¿äº†JDK1.7æä¾›çš„ElementScanner7
+	 *	å°†ä¼šä»¥visitoræ¨¡å¼è®¿é—®æŠ½è±¡è¯­æ³•æ ‘ä¸­çš„å…ƒç´ 
 	 *  @author wangdk,wangdk@erongdu.com
-	 *  @CreatTime 2018Äê5ÔÂ17ÈÕ ÉÏÎç9:09:07
+	 *  @CreatTime 2018å¹´5æœˆ17æ—¥ ä¸Šåˆ9:09:07
 	 *  @since version 1.0.0
 	 */
 	private class NameCheckScanner extends ElementScanner7<Void, Void>{
-		
+
 		/**
-		 * ´Ë·½·¨ÓÃÓÚjavaÀàµÄ¼ì²é
+		 * æ­¤æ–¹æ³•ç”¨äºjavaç±»çš„æ£€æŸ¥
 		 * */
 		@Override
 		public Void visitType(TypeElement e,Void p){
@@ -55,23 +55,23 @@ public class NameChecker {
 			super.visitType(e, p);
 			return null;
 		}
-		
+
 		/**
-		 * ¼ì²é·½·¨ÃûÊÇ·ñºÏ·¨
+		 * æ£€æŸ¥æ–¹æ³•åæ˜¯å¦åˆæ³•
 		 * */
 		@Override
 		public Void visitExecutable(ExecutableElement e,Void p){
 			if(e.getKind() == ElementKind.METHOD){
 				Name name = e.getSimpleName();
 				if(name.contentEquals(e.getEnclosingElement().getSimpleName())){
-					messager.printMessage(Kind.WARNING, "Ò»¸öÆÕÍ¨·½·¨"+name+"²»Ó¦¸ÃÓëÀàÃûÖØ¸´,±ÜÃâÓë¹¹Ôìº¯Êı²úÉú»ìÏı.",e);
+					messager.printMessage(Kind.WARNING, "ä¸€ä¸ªæ™®é€šæ–¹æ³•"+name+"ä¸åº”è¯¥ä¸ç±»åé‡å¤,é¿å…ä¸æ„é€ å‡½æ•°äº§ç”Ÿæ··æ·†.",e);
 					checkCamelCase(e, false);
 				}
 				super.visitExecutable(e, p);
 			}
 			return null;
 		}
-		
+
 		@Override
 		public Void visitVariable(VariableElement e,Void p){
 			if(e.getKind() == ElementKind.ENUM_CONSTANT || e.getConstantValue() != null || heuristicallyConstant(e)){
@@ -81,7 +81,7 @@ public class NameChecker {
 			}
 			return null;
 		}
-		
+
 		private boolean heuristicallyConstant(VariableElement e){
 			if(e.getEnclosingElement().getKind() == ElementKind.INTERFACE){
 				return true;
@@ -91,17 +91,17 @@ public class NameChecker {
 				return false;
 			}
 		}
-		
-		
+
+
 		/**
 		 * @description
-		 * ¼ì²é´«ÈëµÄElement ÊÇ·ñ·ûºÏÍÕ·åÊ½ÃüÃû·¨,Èç²»·ûºÏ,ÔòÊä³ö¾¯¸æĞÅÏ¢
+		 * æ£€æŸ¥ä¼ å…¥çš„Element æ˜¯å¦ç¬¦åˆé©¼å³°å¼å‘½åæ³•,å¦‚ä¸ç¬¦åˆ,åˆ™è¾“å‡ºè­¦å‘Šä¿¡æ¯
 		 * @param e
 		 * @param initialCaps
 		 * @author wangdk
 		 * @return void
 		 * @since  1.0.0
-		*/
+		 */
 		private void checkCamelCase(Element e,boolean initialCaps){
 			String name = e.getSimpleName().toString();
 			boolean previousUpper = false;
@@ -110,18 +110,18 @@ public class NameChecker {
 			if(Character.isUpperCase(firstCodePoint)){
 				previousUpper = true;
 				if(!initialCaps){
-					messager.printMessage(Kind.WARNING, "Ãû³Æ"+name+"Ó¦µ±ÒÔĞ¡Ğ´×ÖÄ¸¿ªÍ·",e);
+					messager.printMessage(Kind.WARNING, "åç§°"+name+"åº”å½“ä»¥å°å†™å­—æ¯å¼€å¤´",e);
 					return;
 				}
 			}else if(Character.isLowerCase(firstCodePoint)){
 				if(initialCaps){
-					messager.printMessage(Kind.WARNING, "Ãû³Æ"+name+"Ó¦µ±ÒÔ´óĞ´×ÖÄ¸¿ªÍ·",e);
+					messager.printMessage(Kind.WARNING, "åç§°"+name+"åº”å½“ä»¥å¤§å†™å­—æ¯å¼€å¤´",e);
 					return;
 				}
 			}else{
 				conventional = false;
 			}
-			
+
 			if(conventional){
 				int cp = firstCodePoint;
 				for(int i = Character.charCount(cp);i<name.length();i+=Character.charCount(cp)){
@@ -137,20 +137,20 @@ public class NameChecker {
 					}
 				}
 			}
-			
+
 			if(!conventional){
-				messager.printMessage(Kind.WARNING, "Ãû³Æ"+name+"Ó¦µ±·ûºÏÍÕ·åÊ½ÃüÃû·¨",e);
+				messager.printMessage(Kind.WARNING, "åç§°"+name+"åº”å½“ç¬¦åˆé©¼å³°å¼å‘½åæ³•",e);
 			}
 		}
-		
+
 		/**
 		 * @description
-		 * ´óĞ´ÃüÃû¼ì²é,ÒªÇóµÚÒ»¸ö×ÖÄ¸±ØĞëÊÇ´óĞ´Ó¢ÎÄ×ÖÄ¸,ÆäËû×ÖÄ¸¿ÉÒÔÊÇÏÂ»®Ïß»òÕß´óĞ´Ó¢ÎÄ×ÖÄ¸
+		 * å¤§å†™å‘½åæ£€æŸ¥,è¦æ±‚ç¬¬ä¸€ä¸ªå­—æ¯å¿…é¡»æ˜¯å¤§å†™è‹±æ–‡å­—æ¯,å…¶ä»–å­—æ¯å¯ä»¥æ˜¯ä¸‹åˆ’çº¿æˆ–è€…å¤§å†™è‹±æ–‡å­—æ¯
 		 * @param e
 		 * @author wangdk
 		 * @return void
 		 * @since  1.0.0
-		*/
+		 */
 		private void checkAllCaps(Element e){
 			String name = e.getSimpleName().toString();
 			boolean conventional = true;
@@ -178,7 +178,7 @@ public class NameChecker {
 				}
 			}
 			if(!conventional){
-				messager.printMessage(Kind.WARNING, "³£Á¿"+name+"Ó¦µ±È«²¿ÒÔ´óĞ´×ÖÄ¸»òÕßÏÂ»®ÏßÃüÃû,²¢ÇÒÒÔ×ÖÄ¸¿ªÍ·",e);
+				messager.printMessage(Kind.WARNING, "å¸¸é‡"+name+"åº”å½“å…¨éƒ¨ä»¥å¤§å†™å­—æ¯æˆ–è€…ä¸‹åˆ’çº¿å‘½å,å¹¶ä¸”ä»¥å­—æ¯å¼€å¤´",e);
 			}
 		}
 	}

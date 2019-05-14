@@ -17,23 +17,23 @@ import javax.lang.model.element.TypeElement;
  * @CreatTime 2018/5/16 18:30
  * @Since version 1.0.0
  */
-@SupportedAnnotationTypes("*") //ÓÃ*ºÅ±íÊ¾ ¿ÉÒÔÖ§³ÖËùÓĞµÄannotations
-@SupportedSourceVersion(SourceVersion.RELEASE_7) //Ö»Ö§³ÖJDK1.7µÄjava´úÂë
+@SupportedAnnotationTypes("*") //ç”¨*å·è¡¨ç¤º å¯ä»¥æ”¯æŒæ‰€æœ‰çš„annotations
+@SupportedSourceVersion(SourceVersion.RELEASE_7) //åªæ”¯æŒJDK1.7çš„javaä»£ç 
 public class NameCheckProcessor extends AbstractProcessor {
 
 	private NameChecker nameChecker;
-	
+
 	/**
-	 * ³õÊ¼»¯Ãû³Æ¼ì²é²å¼ş
+	 * åˆå§‹åŒ–åç§°æ£€æŸ¥æ’ä»¶
 	 */
 	@Override
 	public void init(ProcessingEnvironment processingEnv){
 		super.init(processingEnv);
 		nameChecker = new NameChecker(processingEnv);
 	}
-	
+
 	/**
-	 * ¶ÔÊäÈëµÄÓï·¨Ê÷¸÷¸ö½Úµã½øĞĞ¼ì²é
+	 * å¯¹è¾“å…¥çš„è¯­æ³•æ ‘å„ä¸ªèŠ‚ç‚¹è¿›è¡Œæ£€æŸ¥
 	 */
 	@Override
 	public boolean process(Set<? extends TypeElement> annotations,	RoundEnvironment roundEnv) {
@@ -42,7 +42,7 @@ public class NameCheckProcessor extends AbstractProcessor {
 				nameChecker.checkNames(element);
 			}
 		}
-		
+
 		return false;
 	}
 

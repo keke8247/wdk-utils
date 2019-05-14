@@ -1,7 +1,12 @@
 package com.wdk.util;
 
 import java.util.Scanner;
-
+/**
+ * @Description:
+ * 斐波那契数列
+ * @Param
+ * @return
+*/
 public class FBNQSL {
 	public static void main(String[] args) {  
         Scanner scanner = new Scanner(System.in);  
