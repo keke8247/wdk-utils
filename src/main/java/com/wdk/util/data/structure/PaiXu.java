@@ -4,11 +4,8 @@ import org.junit.Test;
 
 import java.util.Random;
 
-
 public class PaiXu {
 
-
-	@org.junit.Test
 	public void testOne(){
 		Random rm = new Random();
 		int[][] list = new int[10][10];
@@ -20,11 +17,11 @@ public class PaiXu {
 			System.out.println();
 		}
 	}
-	@org.junit.Test
 	/**
 	 * 冒泡排序
 	 * */
-	public static void testTwo(){
+	@Test
+	public void testTwo(){
 		Random rm = new Random();
 		int[] list = new int[100];
 		int x = 0;
@@ -55,8 +52,8 @@ public class PaiXu {
 	/**
 	 * 插入排序
 	 * */
-	@org.junit.Test
-	public static void testThree(){
+	@Test
+	public void testThree(){
 		Random rm = new Random();
 		int[] list = new int[100];
 		int x = 0;
@@ -92,7 +89,8 @@ public class PaiXu {
 	 * @Param a 需要排序的数组   low=0 high=a.length()
 	 * @return
 	 **/
-	public static void kuaisu(int[] a,int low,int high){
+	@Test
+	public void kuaisu(int[] a,int low,int high){
 		int start = low;
 		int end = high;
 		int key = a[low];
@@ -132,10 +130,5 @@ public class PaiXu {
 		//递归
 		if(start>low) kuaisu(a,low,start-1);//左边序列。第一个索引位置到关键值索引-1
 		if(end<high) kuaisu(a,end+1,high);//右边序列。从关键值索引+1到最后一个
-	}
-	
-	public static void main(String[] args) {
-//		testTwo();
-		testThree();
 	}
 }
