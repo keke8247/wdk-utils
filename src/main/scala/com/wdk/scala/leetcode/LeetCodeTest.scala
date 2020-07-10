@@ -11,14 +11,7 @@ import scala.collection.mutable.ArrayBuffer
   * @Version: v1.0
   **/
 object LeetCodeTest {
-    def main(args: Array[String]): Unit = {
-//        println(smallerNumbersThanCurrent(Array(1,3,2,5)).mkString(","))
 
-        val nums = Array(1,2,3,4,0)
-        val index = Array(0,1,2,3,0)
-
-        println(createTargetArray(nums,index).mkString(","))
-    }
 
     //给你一个整数数组 nums，请你返回其中位数为 偶数 的数字的个数。
     def findNumbers(nums: Array[Int]): Int = {
@@ -111,6 +104,74 @@ object LeetCodeTest {
         val tuples: Array[(Int, Int)] = startTime.zip(endTime)
         val array: Array[(Int, Int)] = tuples.filter(item=>(item._1<= queryTime && item._2 >= queryTime))
         array.size
+    }
+
+    /*
+    * 题目:
+    * 平面上有 n 个点，点的位置用整数坐标表示 points[i] = [xi, yi]。请你计算访问所有这些点需要的最小时间（以秒为单位）。
+        你可以按照下面的规则在平面上移动：
+        每一秒沿水平或者竖直方向移动一个单位长度，或者跨过对角线（可以看作在一秒内向水平和竖直方向各移动一个单位长度）。
+        必须按照数组中出现的顺序来访问这些点。
+        输入：points = [[1,1],[3,4],[-1,0]]
+        输出：7
+        解释：一条最佳的访问路径是： [1,1] -> [2,2] -> [3,3] -> [3,4] -> [2,3] -> [1,2] -> [0,1] -> [-1,0]
+        从 [1,1] 到 [3,4] 需要 3 秒
+        从 [3,4] 到 [-1,0] 需要 4 秒
+        一共需要 7 秒
+    * */
+    //题解: 遍历素组获取节点坐标.计算当前坐标 到下一坐标的位移步骤. 由于可以 斜着走 所以 最小步数为 min(x1-x2,y1-y2)
+    def minTimeToVisitAllPoints(points: Array[Array[Int]]): Int = {
+        val pointZip: Array[(Array[Int], Int)] = points.zipWithIndex
+        val intses: Array[Array[Int]] = pointZip.collect {
+            case (point, index) if index < pointZip.length - 1 => {
+                Array(Math.max(Math.abs(point(0) - points(index + 1)(0)), Math.abs(point(1) - points(index + 1)(1))))
+            }
+        }
+        intses.flatten.sum
+//        val ints: ArrayBuffer[Int] = new ArrayBuffer[Int]()
+//        for (i <- 0 until points.length-1){
+//            ints.append(Math.max(Math.abs(points(i)(0) - points(i + 1)(0)), Math.abs(points(i)(1) - points(i + 1)(1))))
+//        }
+//
+//        ints.toArray.sum
+    }
+
+    //题目:给你一个单链表的引用结点 head。链表中每个结点的值不是 0 就是 1。已知此链表是一个整数数字的二进制表示形式。
+    //题解:先获取链表的长度. 再转换数字
+    def getDecimalValue(head: ListNode): Int = {
+//        var length = 0
+//        var tmp = head
+//        while (tmp.next!=null){
+//            tmp = tmp.next
+//            length += 1
+//        }
+//        var tmp2 = head
+//        var res = 0
+//        while (tmp2.next != null){
+//            res += (tmp2.x * Math.pow(2,length)).toInt
+//            tmp2 = tmp2.next
+//        }
+//        res += tmp2.x
+//        res
+
+        var h = head
+        var sum = 0
+        while (h != null) {
+            sum = sum * 2 + h.x
+            h = h.next
+        }
+        sum
+
+    }
+
+    def main(args: Array[String]): Unit = {
+        //        println(smallerNumbersThanCurrent(Array(1,3,2,5)).mkString(","))
+
+        val node: ListNode = new ListNode(1)
+        node.next = new ListNode(0)
+        node.next.next = new ListNode(1)
+
+        println(getDecimalValue(node))
     }
 
 
